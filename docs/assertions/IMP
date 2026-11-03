@@ -1,0 +1,16 @@
+6. Other validations companies commonly implement
+These go beyond simple Hamcrest and TestNG assertions.
+Validation type	What you verify
+JSON schema validation	Response structure, required fields, data types
+Authentication	Valid token succeeds; invalid or missing token is rejected
+Authorization	Users cannot access unauthorized resources
+CRUD consistency	Created data can be retrieved, updated, and deleted
+Negative testing	Invalid inputs produce expected 4xx responses
+Boundary validation	Minimum, maximum, empty, and oversized values
+Data integrity	Values match expected business rules
+Pagination	Page size, offsets, metadata, next-page behavior
+Sorting	Results appear in requested order
+Filtering	Every returned record meets the filter
+Contract validation	Response follows the agreed API contract
+Database validation	API results match persisted database records
+Idempotency	Repeated requests behave according to API requirements

@@ -1,0 +1,23 @@
+2. Authentication Testing
+Bearer token, missing token, invalid token, 401
+Next
+[ ]
+3. Authorization Testing
+Role-based access, 403, ownership restrictions
+[ ]
+4. Data-Driven Testing
+TestNG @DataProvider, positive and negative datasets
+[ ]
+5. Business Rule Validation
+
+Input boundaries, error messages, valid state changes
+[ ]
+6. Data Consistency
+Verify POST → GET → PUT → DELETE and persisted values
+
+Phase	Topics
+Phase 2 — Framework	BaseTest, RequestSpecification, ResponseSpecification
+Phase 3 — Java design	POJO, Jackson, serialization/deserialization, OOP
+Phase 4 — Test architecture	API clients, validators, test data, configuration
+Phase 5 — CI/CD	Maven, Git, Jenkins, Docker, reporting
+Phase 6 — Interview preparation	Framework explanation, coding, API scenarios

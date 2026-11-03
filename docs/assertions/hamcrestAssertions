@@ -1,0 +1,54 @@
+equalTo(value)	Exact equality
+not(equalTo(value))	Not equal
+is(value)	Readable equality shorthand
+notNullValue()	Not null
+nullValue()	Null
+hasItem(value)	Collection contains an element
+hasItems(a, b)	Collection contains multiple elements
+everyItem(matcher)	Every element satisfies a condition
+hasSize(n)	Collection size
+empty()	Empty collection
+not(empty())	Nonempty collection
+greaterThan(n)	Greater than
+greaterThanOrEqualTo(n)	Greater than or equal
+lessThan(n)	Less than
+lessThanOrEqualTo(n)	Less than or equal
+containsString(text)	Contains substring
+startsWith(text)	Starts with text
+endsWith(text)	Ends with text
+equalToIgnoringCase(text)	Case-insensitive equality
+matchesPattern(regex)	Regular-expression match
+allOf(a, b)	All conditions must match
+anyOf(a, b)	At least one condition must match
+instanceOf(type)	Validate Java object type
+hasKey(key)	Map contains key
+hasEntry(key, value)	Map contains key/value pair
+
+
+
+import static org.hamcrest.Matchers.*;
+
+// Exact field values
+.body("name", equalTo("Thomas"))
+.body("status", not(equalTo("sold")))
+
+// Null checks
+.body("id", notNullValue())
+
+// String validations
+.body("name", containsString("Thom"))
+.body("name", startsWith("Th"))
+.body("name", endsWith("mas"))
+
+// Numeric validations
+.body("id", greaterThan(0))
+
+// Array validations
+.body("$", hasSize(greaterThan(0)))
+.body("status", everyItem(equalTo("available")))
+
+// Combined conditions
+.body("name", allOf(
+        startsWith("Th"),
+        containsString("oma")
+))

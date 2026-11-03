@@ -1,0 +1,45 @@
+Assert.assertEquals(actual, expected)	Verify exact equality
+Assert.assertNotEquals(actual, expected)	Verify values differ
+Assert.assertTrue(condition)	Verify a condition is true
+Assert.assertFalse(condition)	Verify a condition is false
+Assert.assertNull(value)	Verify a value is null
+Assert.assertNotNull(value)	Verify a value is not null
+Assert.assertSame(actual, expected)	Verify both references point to the same object
+Assert.assertNotSame(actual, expected)	Verify different object references
+Assert.fail("message")	Explicitly fail a test
+Assert.assertThrows(...)	Verify an expected exception is thrown
+
+
+Assert.assertEquals(response.statusCode(), 200);
+Assert.assertEquals(response.jsonPath().getString("name"), "Thomas");
+Assert.assertNotNull(response.jsonPath().get("id"));
+Assert.assertTrue(response.time() < 3000);
+Assert.assertFalse(response.asString().isEmpty());
+
+
+TestNG Soft Assertions:
+
+import org.testng.asserts.SoftAssert;
+
+@Test
+public void validatePetResponse() {
+
+    SoftAssert softAssert = new SoftAssert();
+
+    Response response = given()
+            .baseUri("https://petstore.swagger.io/v2")
+            .pathParam("petId", id)
+        .when()
+            .get("/pet/{petId}");
+
+    softAssert.assertEquals(response.statusCode(), 200);
+    softAssert.assertEquals(
+            response.jsonPath().getString("name"),
+            "Thomas"
+    );
+    softAssert.assertNotNull(
+            response.jsonPath().get("id")
+    );
+
+    softAssert.assertAll();
+}
