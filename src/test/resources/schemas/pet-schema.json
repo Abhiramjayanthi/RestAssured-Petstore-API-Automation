@@ -1,7 +1,7 @@
 
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "array",
+  "type": "object",
   "minItems": 1,
   "items": {
     "type": "object",
