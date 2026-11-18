@@ -20,7 +20,7 @@
             given().queryParam("status", "available")
                     .when().get("/pet/findByStatus")
                     .then().statusCode(200).log().all()
-                    .body(matchesJsonSchemaInClasspath("schemas/pet-schema.json"));
+                    .body(matchesJsonSchemaInClasspath("schemas/pet-list-schema.json"));
         }
 
         @Test

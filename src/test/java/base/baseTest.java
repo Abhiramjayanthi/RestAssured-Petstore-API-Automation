@@ -1,5 +1,6 @@
 package base;
 
+import config.ConfigManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -13,7 +14,22 @@ public class baseTest {
 
     @BeforeClass
     public void setup(){
-        reqSpec = new RequestSpecBuilder().setBaseUri("https://petstore.swagger.io/v2")
+        String env = System.getProperty("env","petstore");
+        String key = env.equalsIgnoreCase("petstore")
+                ? "base.url"
+                : env.toLowerCase() + ".base.url";
+
+        String url = ConfigManager.getProperty(key);
+
+        if (url == null || url.isBlank()) {
+            throw new IllegalArgumentException(
+                    "No base URL configured for environment: " + env
+            );
+        }
+
+        System.out.println("Selected environment: " + env);
+        System.out.println("Selected URL: " + url);
+        reqSpec = new RequestSpecBuilder().setBaseUri(ConfigManager.getProperty("base.url"))
                 .setContentType(ContentType.JSON)
                 .build();
         resSpec = new ResponseSpecBuilder()
