@@ -25,9 +25,7 @@
     },
     "required": [
       "id",
-      "name",
-      "status",
-      "photoUrls"
+      "status"
     ]
   }
 }
